@@ -1,0 +1,17 @@
+{
+  "crons": [
+    { "path": "/api/cron/pubmed-scanner", "schedule": "0 6 * * *" },
+    { "path": "/api/cron/content-generator", "schedule": "0 8 * * *" },
+    { "path": "/api/cron/quality-checker", "schedule": "0 10 * * *" },
+    { "path": "/api/cron/translator", "schedule": "0 12 * * *" },
+    { "path": "/api/cron/seo-optimizer", "schedule": "0 14 * * *" },
+    { "path": "/api/cron/publisher", "schedule": "0 16 * * *" },
+    { "path": "/api/cron/gutscore-calculator", "schedule": "0 0 * * *" },
+    { "path": "/api/cron/analytics-reporter", "schedule": "30 0 * * *" },
+    { "path": "/api/cron/email-digest", "schedule": "0 9 * * 1" },
+    { "path": "/api/cron/email-sender", "schedule": "0 10 * * 1" },
+    { "path": "/api/cron/correlation-engine", "schedule": "0 0 * * 0" },
+    { "path": "/api/cron/affiliate-checker", "schedule": "0 12 * * 5" },
+    { "path": "/api/cron/outcomes-aggregator", "schedule": "0 0 * * 6" }
+  ]
+}

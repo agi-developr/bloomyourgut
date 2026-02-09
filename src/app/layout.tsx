@@ -4,6 +4,8 @@ import "./globals.css"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Toaster } from "@/components/ui/sonner"
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
 
@@ -30,6 +32,24 @@ export const metadata: Metadata = {
     siteName: "BloomYourGut",
     title: "BloomYourGut - Evidence-Based Gut Health",
     description: "Your gut health journey, backed by science.",
+    images: [
+      {
+        url: "/og-image-optimized.jpg",
+        width: 1200,
+        height: 630,
+        alt: "BloomYourGut - Evidence-Based Gut Health",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BloomYourGut - Evidence-Based Gut Health",
+    description: "Your gut health journey, backed by science.",
+    images: ["/og-image-optimized.jpg"],
+  },
+  icons: {
+    icon: "/logo-optimized.jpg",
+    apple: "/logo-optimized.jpg",
   },
 }
 
@@ -45,6 +65,8 @@ export default function RootLayout({
         <main className="min-h-screen">{children}</main>
         <Footer />
         <Toaster />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )

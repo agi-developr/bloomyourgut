@@ -2,7 +2,8 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { Leaf, Menu } from "lucide-react"
+import Image from "next/image"
+import { Menu } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Sheet,
@@ -26,7 +27,13 @@ export function Header() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2">
-          <Leaf className="h-7 w-7 text-green-500" />
+          <Image
+            src="/logo-optimized.jpg"
+            alt="BloomYourGut"
+            width={36}
+            height={36}
+            className="rounded-full"
+          />
           <span className="text-xl font-bold tracking-tight">
             <span className="text-green-600">Bloom</span>
             <span className="text-gray-900">YourGut</span>
@@ -69,7 +76,13 @@ export function Header() {
           </SheetTrigger>
           <SheetContent side="right" className="w-72">
             <SheetTitle className="flex items-center gap-2 px-2 pt-2">
-              <Leaf className="h-5 w-5 text-green-500" />
+              <Image
+                src="/logo-optimized.jpg"
+                alt="BloomYourGut"
+                width={28}
+                height={28}
+                className="rounded-full"
+              />
               <span className="font-bold">
                 <span className="text-green-600">Bloom</span>
                 <span className="text-gray-900">YourGut</span>

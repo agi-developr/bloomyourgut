@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { toast } from "sonner"
 import {
   ClipboardList,
   Plus,
@@ -202,7 +203,10 @@ export default function ProtocolsPage() {
             </p>
           </div>
         </div>
-        <Button className="bg-green-600 text-white hover:bg-green-700">
+        <Button
+          className="bg-green-600 text-white hover:bg-green-700"
+          onClick={() => toast.info('Protocol Builder requires a Pro subscription. Upgrade to create custom protocols.')}
+        >
           <Plus className="mr-2 h-4 w-4" />
           Create Protocol
         </Button>

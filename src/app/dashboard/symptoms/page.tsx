@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { toast } from "sonner"
 import { Activity, Save } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -45,19 +46,36 @@ export default function SymptomsPage() {
   const [mood, setMood] = useState([6])
   const [stoolType, setStoolType] = useState<number | null>(null)
   const [notes, setNotes] = useState("")
+  const [saving, setSaving] = useState(false)
 
-  function handleSave() {
-    // TODO: Save to Supabase
-    console.log({
-      date,
-      bloating: bloating[0],
-      pain: pain[0],
-      energy: energy[0],
-      gas: gas[0],
-      mood: mood[0],
-      stool_type: stoolType,
-      notes,
-    })
+  async function handleSave() {
+    setSaving(true)
+    try {
+      const res = await fetch('/api/symptoms', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          date,
+          bloating: bloating[0],
+          pain: pain[0],
+          energy: energy[0],
+          gas: gas[0],
+          mood: mood[0],
+          stool_type: stoolType,
+          notes: notes || null,
+        }),
+      })
+      if (!res.ok) {
+        const err = await res.json()
+        throw new Error(err.error || 'Failed to save')
+      }
+      toast.success('Symptoms saved successfully!')
+      setNotes('')
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : 'Failed to save symptoms')
+    } finally {
+      setSaving(false)
+    }
   }
 
   return (
@@ -188,10 +206,11 @@ export default function SymptomsPage() {
       {/* Save button */}
       <Button
         onClick={handleSave}
+        disabled={saving}
         className="w-full bg-green-600 text-white hover:bg-green-700 sm:w-auto"
       >
         <Save className="mr-2 h-4 w-4" />
-        Save Symptoms
+        {saving ? 'Saving...' : 'Save Symptoms'}
       </Button>
 
       {/* History */}

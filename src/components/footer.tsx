@@ -1,11 +1,11 @@
 import Link from "next/link"
-import { Leaf } from "lucide-react"
+import Image from "next/image"
 
 const footerLinks = {
   company: [
     { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
-    { href: "/careers", label: "Careers" },
+    { href: "/faq", label: "FAQ" },
   ],
   resources: [
     { href: "/articles", label: "Articles" },
@@ -32,7 +32,13 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-2">
-              <Leaf className="h-6 w-6 text-green-500" />
+              <Image
+                src="/logo-optimized.jpg"
+                alt="BloomYourGut"
+                width={28}
+                height={28}
+                className="rounded-full"
+              />
               <span className="text-lg font-bold">
                 <span className="text-green-600">Bloom</span>
                 <span className="text-gray-900">YourGut</span>

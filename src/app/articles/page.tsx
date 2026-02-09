@@ -17,6 +17,7 @@ const categories = [
   "Nutrition",
   "Probiotics",
   "Research",
+  "Histamine",
 ]
 
 // Placeholder articles for when Supabase isn't connected
@@ -74,6 +75,87 @@ const placeholderArticles = [
     category: "Nutrition",
     readingTime: 7,
     publishedAt: "2026-01-10",
+  },
+  {
+    title: "Akkermansia muciniphila: The Next-Generation Probiotic",
+    slug: "akkermansia-muciniphila-next-generation-probiotic",
+    excerpt:
+      "This keystone species makes up 1-5% of a healthy gut microbiome. Learn about the latest research on Akkermansia and its role in metabolic health, gut barrier function, and inflammation.",
+    category: "Microbiome",
+    readingTime: 11,
+    publishedAt: "2026-01-08",
+  },
+  {
+    title: "Elemental Diet for SIBO: A Complete 2-Week Protocol",
+    slug: "elemental-diet-sibo-complete-2-week-protocol",
+    excerpt:
+      "The elemental diet has shown up to 85% efficacy for SIBO in clinical studies. Here's a detailed guide including preparation, daily schedules, and what to expect during treatment.",
+    category: "SIBO",
+    readingTime: 14,
+    publishedAt: "2026-01-05",
+  },
+  {
+    title: "Fiber Types Explained: Soluble, Insoluble, and Fermentable",
+    slug: "fiber-types-explained-soluble-insoluble-fermentable",
+    excerpt:
+      "Not all fiber is created equal, especially for sensitive guts. Understand the three main categories and which types are best tolerated during gut healing protocols.",
+    category: "Nutrition",
+    readingTime: 8,
+    publishedAt: "2026-01-02",
+  },
+  {
+    title: "IBS and Anxiety: Breaking the Gut-Brain Cycle",
+    slug: "ibs-and-anxiety-breaking-gut-brain-cycle",
+    excerpt:
+      "Up to 60% of IBS patients also have anxiety or depression. Explore the bidirectional gut-brain connection and evidence-based strategies that address both simultaneously.",
+    category: "IBS",
+    readingTime: 10,
+    publishedAt: "2025-12-28",
+  },
+  {
+    title: "Butyrate: The Short-Chain Fatty Acid Your Gut Craves",
+    slug: "butyrate-short-chain-fatty-acid-gut-craves",
+    excerpt:
+      "Butyrate is the primary fuel source for colonocytes and a key regulator of gut inflammation. Learn how to naturally increase butyrate production through diet and supplementation.",
+    category: "Research",
+    readingTime: 9,
+    publishedAt: "2025-12-22",
+  },
+  {
+    title: "Histamine Intolerance and Gut Health: The Hidden Connection",
+    slug: "histamine-intolerance-gut-health-hidden-connection",
+    excerpt:
+      "Could your gut bacteria be producing excess histamine? Understand the link between dysbiosis, DAO enzyme deficiency, and histamine intolerance symptoms.",
+    category: "Research",
+    readingTime: 12,
+    publishedAt: "2025-12-18",
+  },
+  {
+    title: "Best Probiotic Strains for IBS: A Systematic Review",
+    slug: "best-probiotic-strains-ibs-systematic-review",
+    excerpt:
+      "We analyzed 47 randomized controlled trials to identify which probiotic strains have the strongest evidence for reducing IBS symptoms including bloating, pain, and altered bowel habits.",
+    category: "Probiotics",
+    readingTime: 13,
+    publishedAt: "2025-12-14",
+  },
+  {
+    title: "The Carnivore Diet for Gut Issues: What Does the Evidence Say?",
+    slug: "carnivore-diet-gut-issues-evidence",
+    excerpt:
+      "Some people report dramatic gut improvements on an all-meat diet. We examine the limited research, proposed mechanisms, potential risks, and who might benefit.",
+    category: "Nutrition",
+    readingTime: 11,
+    publishedAt: "2025-12-10",
+  },
+  {
+    title: "Vagus Nerve Stimulation for Gut Health: Practical Techniques",
+    slug: "vagus-nerve-stimulation-gut-health-practical-techniques",
+    excerpt:
+      "The vagus nerve is the main communication highway between your gut and brain. Discover evidence-based techniques like cold exposure, gargling, and deep breathing that activate the vagal tone.",
+    category: "Research",
+    readingTime: 7,
+    publishedAt: "2025-12-05",
   },
 ]
 

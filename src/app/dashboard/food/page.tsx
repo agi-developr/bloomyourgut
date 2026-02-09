@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, type KeyboardEvent } from "react"
+import { toast } from "sonner"
 import { Utensils, Save, X, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -67,7 +68,7 @@ export default function FoodDiaryPage() {
   const [foods, setFoods] = useState<string[]>([])
   const [foodInput, setFoodInput] = useState("")
   const [notes, setNotes] = useState("")
-  const [meals] = useState<MealEntry[]>(placeholderMeals)
+  const [meals, setMeals] = useState<MealEntry[]>(placeholderMeals)
 
   function handleAddFood(e: KeyboardEvent<HTMLInputElement>) {
     if (e.key === "Enter" && foodInput.trim()) {
@@ -83,11 +84,36 @@ export default function FoodDiaryPage() {
     setFoods(foods.filter((f) => f !== food))
   }
 
-  function handleSave() {
-    // TODO: Save to Supabase
-    console.log({ date, mealType, foods, notes })
-    setFoods([])
-    setNotes("")
+  const [saving, setSaving] = useState(false)
+
+  async function handleSave() {
+    setSaving(true)
+    try {
+      const res = await fetch('/api/food', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          date,
+          meal_type: mealType,
+          foods,
+          notes: notes || null,
+        }),
+      })
+      if (!res.ok) {
+        const err = await res.json()
+        throw new Error(err.error || 'Failed to save')
+      }
+      const data = await res.json()
+      toast.success('Meal saved successfully!')
+      // Add to today's meals display
+      setMeals(prev => [{ id: data.food.id || Date.now().toString(), mealType, foods: [...foods], notes }, ...prev])
+      setFoods([])
+      setNotes('')
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : 'Failed to save meal')
+    } finally {
+      setSaving(false)
+    }
   }
 
   return (
@@ -209,11 +235,11 @@ export default function FoodDiaryPage() {
       {/* Save button */}
       <Button
         onClick={handleSave}
-        disabled={foods.length === 0}
+        disabled={foods.length === 0 || saving}
         className="w-full bg-green-600 text-white hover:bg-green-700 sm:w-auto"
       >
         <Save className="mr-2 h-4 w-4" />
-        Save Meal
+        {saving ? 'Saving...' : 'Save Meal'}
       </Button>
 
       {/* Today's meals */}

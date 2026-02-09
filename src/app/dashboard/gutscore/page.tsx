@@ -1,5 +1,6 @@
 "use client"
 
+import { toast } from "sonner"
 import { BarChart3, Info, Lightbulb } from "lucide-react"
 import {
   Card,
@@ -83,6 +84,16 @@ export default function GutScorePage() {
           </p>
         </div>
       </div>
+
+      {/* Info banner */}
+      <Card className="mb-6 border-blue-200 bg-blue-50">
+        <CardContent className="flex items-center gap-3 py-3">
+          <Info className="h-5 w-5 shrink-0 text-blue-500" />
+          <p className="text-sm text-blue-700">
+            Your GutScore is calculated from your tracking data. Log symptoms, food, and supplements daily for the most accurate score.
+          </p>
+        </CardContent>
+      </Card>
 
       {/* Big score display */}
       <Card className="mb-8">

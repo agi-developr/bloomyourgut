@@ -1,9 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import { Mail, ArrowRight } from "lucide-react"
+import { Mail, ArrowRight, Loader2 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { toast } from "sonner"
 
 interface EmailCaptureProps {
   variant?: "default" | "compact"
@@ -13,12 +14,36 @@ interface EmailCaptureProps {
 export function EmailCapture({ variant = "default", className = "" }: EmailCaptureProps) {
   const [email, setEmail] = useState("")
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (!email) return
-    // Placeholder: will POST to /api/email-subscribe
-    setSubmitted(true)
+    if (!email || loading) return
+
+    setLoading(true)
+    try {
+      const res = await fetch("/api/email-subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      })
+
+      if (!res.ok) {
+        const data = await res.json()
+        throw new Error(data.error || "Failed to subscribe")
+      }
+
+      setSubmitted(true)
+      toast.success("Subscribed!", {
+        description: "You're on the list. Check your inbox to confirm.",
+      })
+    } catch (err) {
+      toast.error("Something went wrong", {
+        description: err instanceof Error ? err.message : "Please try again.",
+      })
+    } finally {
+      setLoading(false)
+    }
   }
 
   if (submitted) {
@@ -47,9 +72,10 @@ export function EmailCapture({ variant = "default", className = "" }: EmailCaptu
         />
         <Button
           type="submit"
+          disabled={loading}
           className="bg-green-600 text-white hover:bg-green-700"
         >
-          Subscribe
+          {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : "Subscribe"}
         </Button>
       </form>
     )
@@ -79,10 +105,17 @@ export function EmailCapture({ variant = "default", className = "" }: EmailCaptu
           />
           <Button
             type="submit"
+            disabled={loading}
             className="bg-green-600 text-white hover:bg-green-700"
           >
-            Subscribe Free
-            <ArrowRight className="ml-1 h-4 w-4" />
+            {loading ? (
+              <Loader2 className="h-4 w-4 animate-spin" />
+            ) : (
+              <>
+                Subscribe Free
+                <ArrowRight className="ml-1 h-4 w-4" />
+              </>
+            )}
           </Button>
         </form>
       </div>

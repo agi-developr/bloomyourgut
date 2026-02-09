@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { toast } from "sonner"
 import { Pill, Save, Clock } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
@@ -78,14 +79,39 @@ export default function SupplementsPage() {
   const [dose, setDose] = useState("")
   const [timing, setTiming] = useState<Timing>("morning")
   const [notes, setNotes] = useState("")
-  const [supplements] = useState<SupplementEntry[]>(placeholderSupplements)
+  const [supplements, setSupplements] = useState<SupplementEntry[]>(placeholderSupplements)
 
-  function handleSave() {
-    // TODO: Save to Supabase
-    console.log({ date, supplement: supplementName, dose, timing, notes })
-    setSupplementName("")
-    setDose("")
-    setNotes("")
+  const [saving, setSaving] = useState(false)
+
+  async function handleSave() {
+    setSaving(true)
+    try {
+      const res = await fetch('/api/supplements', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          date,
+          supplement: supplementName,
+          dose: dose || null,
+          timing,
+          notes: notes || null,
+        }),
+      })
+      if (!res.ok) {
+        const err = await res.json()
+        throw new Error(err.error || 'Failed to save')
+      }
+      const data = await res.json()
+      toast.success('Supplement saved successfully!')
+      setSupplements(prev => [{ id: data.supplement.id || Date.now().toString(), name: supplementName, dose, timing, notes }, ...prev])
+      setSupplementName('')
+      setDose('')
+      setNotes('')
+    } catch (error) {
+      toast.error(error instanceof Error ? error.message : 'Failed to save supplement')
+    } finally {
+      setSaving(false)
+    }
   }
 
   return (
@@ -187,11 +213,11 @@ export default function SupplementsPage() {
       {/* Save button */}
       <Button
         onClick={handleSave}
-        disabled={!supplementName.trim()}
+        disabled={!supplementName.trim() || saving}
         className="w-full bg-green-600 text-white hover:bg-green-700 sm:w-auto"
       >
         <Save className="mr-2 h-4 w-4" />
-        Save Supplement
+        {saving ? 'Saving...' : 'Save Supplement'}
       </Button>
 
       {/* Today's supplements */}

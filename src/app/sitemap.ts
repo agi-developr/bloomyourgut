@@ -26,6 +26,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: 'https://bloomyourgut.com/disclaimer', lastModified: new Date(), changeFrequency: 'yearly' as const, priority: 0.3 },
     { url: 'https://bloomyourgut.com/privacy', lastModified: new Date(), changeFrequency: 'yearly' as const, priority: 0.3 },
     { url: 'https://bloomyourgut.com/terms', lastModified: new Date(), changeFrequency: 'yearly' as const, priority: 0.3 },
+    { url: 'https://bloomyourgut.com/research', lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 },
+    { url: 'https://bloomyourgut.com/contact', lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.5 },
+    { url: 'https://bloomyourgut.com/faq', lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.6 },
+    { url: 'https://bloomyourgut.com/newsletter', lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.5 },
+    { url: 'https://bloomyourgut.com/chat', lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 },
   ]
 
   // Published articles (English)

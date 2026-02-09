@@ -38,18 +38,18 @@ const PRICING_MAP: Record<string, CountryPricing> = {
     bloom: {
       monthly: 7,
       annual: 70,
-      monthlyPriceId: 'price_bloom_monthly_us',
-      annualPriceId: 'price_bloom_annual_us',
+      monthlyPriceId: 'price_1SyxNJKFdDBxr4nxeVho4uIH',
+      annualPriceId: 'price_1SyxNLKFdDBxr4nxSNq904K4',
     },
     pro: {
       monthly: 29,
       annual: 290,
-      monthlyPriceId: 'price_pro_monthly_us',
-      annualPriceId: 'price_pro_annual_us',
+      monthlyPriceId: 'price_1SyxNNKFdDBxr4nxB4pVWpJh',
+      annualPriceId: 'price_1SyxNPKFdDBxr4nxrmRaR9BW',
     },
     consult: {
       amount: 149,
-      priceId: 'price_consult_us',
+      priceId: 'price_1SyxNRKFdDBxr4nxoCZxzpQ0',
     },
   },
 

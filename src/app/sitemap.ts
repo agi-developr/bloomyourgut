@@ -1,18 +1,36 @@
 import { MetadataRoute } from 'next'
 import { createAdminClient } from '@/lib/supabase/admin'
+import { HUB_PAGES, HUB_CATEGORIES, hubPageUrl } from '@/data/hub-pages'
 
 export const dynamic = 'force-dynamic'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  // Programmatic SEO hub pages (static data — always available, no env needed)
+  const hubPages: MetadataRoute.Sitemap = [
+    ...HUB_CATEGORIES.map((c) => ({
+      url: `https://bloomyourgut.com/${c}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.8,
+    })),
+    ...HUB_PAGES.map((p) => ({
+      url: hubPageUrl(p),
+      lastModified: new Date(),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+  ]
+
   let supabase: ReturnType<typeof createAdminClient>
   try {
     supabase = createAdminClient()
   } catch {
-    // During build without env vars, return static pages only
+    // During build without env vars, return static + hub pages only
     return [
       { url: 'https://bloomyourgut.com', lastModified: new Date(), changeFrequency: 'daily' as const, priority: 1 },
       { url: 'https://bloomyourgut.com/articles', lastModified: new Date(), changeFrequency: 'daily' as const, priority: 0.9 },
       { url: 'https://bloomyourgut.com/pricing', lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 },
+      ...hubPages,
     ]
   }
 
@@ -61,5 +79,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }))
 
-  return [...staticPages, ...articlePages, ...translationPages]
+  return [...staticPages, ...hubPages, ...articlePages, ...translationPages]
 }

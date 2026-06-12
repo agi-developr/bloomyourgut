@@ -1,0 +1,29 @@
+export type SupplementInteraction = {
+  supp_a: string
+  supp_b: string
+  interaction_type: "synergistic" | "neutral" | "caution" | "avoid"
+  timing: string
+  explanation: string
+}
+
+export const supplementInteractions: SupplementInteraction[] = [
+  {"supp_a":"Activated charcoal","supp_b":"Everything","interaction_type":"caution","timing":"separate_2hr","explanation":"Charcoal adsorbs other supplements"},
+  {"supp_a":"B12","supp_b":"Folate","interaction_type":"synergistic","timing":"together","explanation":"Work together in methylation"},
+  {"supp_a":"Berberine","supp_b":"Probiotics","interaction_type":"caution","timing":"separate_2hr","explanation":"Berberine has antimicrobial effects"},
+  {"supp_a":"Betaine HCL","supp_b":"Antacids","interaction_type":"avoid","timing":"never","explanation":"Opposite mechanisms"},
+  {"supp_a":"Digestive enzymes","supp_b":"Probiotics","interaction_type":"neutral","timing":"separate_30min","explanation":"Enzymes work in stomach, probiotics in gut"},
+  {"supp_a":"Iron","supp_b":"Zinc","interaction_type":"caution","timing":"separate_2hr","explanation":"Compete for absorption"},
+  {"supp_a":"Magnesium","supp_b":"Iron","interaction_type":"caution","timing":"separate_2hr","explanation":"Mg reduces iron absorption"},
+  {"supp_a":"NAC","supp_b":"Vitamin C","interaction_type":"synergistic","timing":"together","explanation":"Both antioxidant support"},
+  {"supp_a":"Omega-3","supp_b":"Turmeric","interaction_type":"synergistic","timing":"together","explanation":"Both anti-inflammatory"},
+  {"supp_a":"Oregano oil","supp_b":"Probiotics","interaction_type":"avoid","timing":"separate_4hr","explanation":"Oregano oil antimicrobial kills probiotics"},
+  {"supp_a":"Probiotics","supp_b":"Antibiotics","interaction_type":"avoid","timing":"separate_4hr","explanation":"Antibiotics kill probiotic strains"},
+  {"supp_a":"Probiotics","supp_b":"L-glutamine","interaction_type":"synergistic","timing":"together","explanation":"Both support gut lining repair"},
+  {"supp_a":"Quercetin","supp_b":"Vitamin C","interaction_type":"synergistic","timing":"together","explanation":"Quercetin stabilizes C"},
+  {"supp_a":"Vitamin D","supp_b":"Magnesium","interaction_type":"synergistic","timing":"together","explanation":"Mg required for D activation"},
+  {"supp_a":"Zinc carnosine","supp_b":"L-glutamine","interaction_type":"synergistic","timing":"together","explanation":"Dual gut lining support"},
+]
+
+export const allSupplements = Array.from(
+  new Set(supplementInteractions.flatMap((i) => [i.supp_a, i.supp_b]))
+).sort()

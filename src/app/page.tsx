@@ -182,6 +182,34 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Free tools CTA */}
+      <section className="bg-white py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="text-3xl font-bold text-gray-900">
+              Free Interactive Tools
+            </h2>
+            <p className="mt-4 text-gray-600">
+              FODMAP food scorer, supplement interaction checker, SIBO symptom
+              assessment, carnivore diet planner, and gut microbiome diversity
+              score — no sign-up required.
+            </p>
+            <div className="mt-8">
+              <Button
+                size="lg"
+                asChild
+                className="bg-green-600 text-white hover:bg-green-700"
+              >
+                <Link href="/tools">
+                  Explore Free Tools
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Pricing preview */}
       <section className="bg-white py-20">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

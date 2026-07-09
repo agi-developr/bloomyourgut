@@ -13,6 +13,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       { url: 'https://bloomyourgut.com', lastModified: new Date(), changeFrequency: 'daily' as const, priority: 1 },
       { url: 'https://bloomyourgut.com/articles', lastModified: new Date(), changeFrequency: 'daily' as const, priority: 0.9 },
       { url: 'https://bloomyourgut.com/pricing', lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.8 },
+      { url: 'https://bloomyourgut.com/tools/fodmap', lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
+      { url: 'https://bloomyourgut.com/tools/carnivore', lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
+      { url: 'https://bloomyourgut.com/tools/sibo-symptoms', lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
+      { url: 'https://bloomyourgut.com/tools/supplements', lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
     ]
   }
 
@@ -31,6 +35,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: 'https://bloomyourgut.com/faq', lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.6 },
     { url: 'https://bloomyourgut.com/newsletter', lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.5 },
     { url: 'https://bloomyourgut.com/chat', lastModified: new Date(), changeFrequency: 'weekly' as const, priority: 0.7 },
+    { url: 'https://bloomyourgut.com/tools', lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.8 },
+    { url: 'https://bloomyourgut.com/tools/fodmap', lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
+    { url: 'https://bloomyourgut.com/tools/carnivore', lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
+    { url: 'https://bloomyourgut.com/tools/sibo-symptoms', lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
+    { url: 'https://bloomyourgut.com/tools/supplements', lastModified: new Date(), changeFrequency: 'monthly' as const, priority: 0.9 },
   ]
 
   // Published articles (English)

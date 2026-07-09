@@ -35,7 +35,7 @@ const tiers = [
       "Community (read-only)",
     ],
     cta: "Get Started Free",
-    ctaHref: "/sign-up",
+    ctaHref: "/auth/signup",
     highlighted: false,
   },
   {
@@ -57,7 +57,7 @@ const tiers = [
       "Personalized research digests",
     ],
     cta: "Start Bloom",
-    ctaHref: "/sign-up?plan=bloom",
+    ctaHref: "/auth/signup?plan=bloom",
     highlighted: true,
   },
   {
@@ -78,7 +78,7 @@ const tiers = [
       "Export health data",
     ],
     cta: "Go Pro",
-    ctaHref: "/sign-up?plan=pro",
+    ctaHref: "/auth/signup?plan=pro",
     highlighted: false,
   },
 ]

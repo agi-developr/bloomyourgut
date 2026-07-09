@@ -142,7 +142,7 @@ export default function ConsultPage() {
               asChild
               className="w-full bg-green-600 text-white hover:bg-green-700"
             >
-              <Link href="/sign-up?consult=async">Book Async Consultation</Link>
+              <Link href="/auth/signup?consult=async">Book Async Consultation</Link>
             </Button>
           </CardFooter>
         </Card>
@@ -185,7 +185,7 @@ export default function ConsultPage() {
               asChild
               className="w-full bg-green-600 text-white hover:bg-green-700"
             >
-              <Link href="/sign-up?consult=live">Book Live Consultation</Link>
+              <Link href="/auth/signup?consult=live">Book Live Consultation</Link>
             </Button>
           </CardFooter>
         </Card>

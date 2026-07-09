@@ -205,7 +205,7 @@ export default function HomePage() {
                 "Community (read-only)",
               ]}
               cta="Get Started Free"
-              ctaHref="/sign-up"
+              ctaHref="/auth/signup"
             />
             <PricingCard
               name="Bloom"
@@ -221,7 +221,7 @@ export default function HomePage() {
                 "Personalized digests",
               ]}
               cta="Start Bloom"
-              ctaHref="/sign-up?plan=bloom"
+              ctaHref="/auth/signup?plan=bloom"
             />
             <PricingCard
               name="Pro"
@@ -235,7 +235,7 @@ export default function HomePage() {
                 "Advanced correlations",
               ]}
               cta="Go Pro"
-              ctaHref="/sign-up?plan=pro"
+              ctaHref="/auth/signup?plan=pro"
             />
           </div>
           <div className="mt-8 text-center">
@@ -273,7 +273,7 @@ export default function HomePage() {
               asChild
               className="bg-white text-green-700 hover:bg-green-50"
             >
-              <Link href="/sign-up">
+              <Link href="/auth/signup">
                 Start Your Journey
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>

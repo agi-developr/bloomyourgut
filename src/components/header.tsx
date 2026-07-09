@@ -63,7 +63,7 @@ export function Header() {
             asChild
             className="bg-green-600 text-white hover:bg-green-700"
           >
-            <Link href="/sign-up">Sign Up</Link>
+            <Link href="/auth/signup">Sign Up</Link>
           </Button>
         </div>
 
@@ -110,7 +110,7 @@ export function Header() {
                   className="mt-2 w-full bg-green-600 text-white hover:bg-green-700"
                   asChild
                 >
-                  <Link href="/sign-up" onClick={() => setOpen(false)}>
+                  <Link href="/auth/signup" onClick={() => setOpen(false)}>
                     Sign Up
                   </Link>
                 </Button>
